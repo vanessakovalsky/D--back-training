@@ -36,11 +36,11 @@ Un portail unique, sur une instance Drupal unique, avec des dizaines de sections
 
 ### OPTIONNEL - Templates
 
-- Un template Province est appliqué à la page d'accueil principale et à certaines pages transversales
+- Un template Demo est appliqué à la page d'accueil principale et à certaines pages transversales
 
-- Certaines sections ont vocation à se voir appliquer le template Province
+- Certaines sections ont vocation à se voir appliquer le template Demo
 
-- Chaque section possède éventuellement son propre template (à défaut, le template Province est appliqué)
+- Chaque section possède éventuellement son propre template (à défaut, le template Demo est appliqué)
 
 ### OPTIONNEL - Divers
 
@@ -54,13 +54,15 @@ Un portail unique, sur une instance Drupal unique, avec des dizaines de sections
 
 ### OPTIONNEL - URL
 
-- Chaque section dispose éventuellement de son propre nom de domaine (à défaut, provincedeliege.be) > visible en permanence, pas une simple redirection
+- Chaque section dispose éventuellement de son propre nom de domaine (à défaut, demodrupal.com) > visible en permanence, pas une simple redirection
 
 ## Exercices
 
 ### Exercice 1 : Créer les sections
 * Installer le module Groups et configurer le :
-composer require drupal/groups 
+```
+composer require drupal/group 
+```
 * Activer le module dans l'interface ou via la console ou drush
 * Aller dans Groups dans la barre d'administration : 
 - quels sont les éléments disponibles
@@ -99,6 +101,25 @@ composer require drupal/groups
 * Créer un formulaire de contact pour chaque section 
 * Ajouter dans le menu de chaque section le lien vers son propre formulaire de contact
 
+
+### Exercice 7 : exporter la configuration dans un module
+* Nous allons créer un premier module pour placer l'ensemble des configurations effectuées.
+* Pour cela nous allons utiliser Drupal Console. 
+```
+vendor\bin\drupal generate:module
+```
+* La console pose alors une série de question pour la génération du module
+* Une fois le module crée, celui ci se trouve dans web/modules/custom/nom_du_module 
+* Il doit contenir à minima un fichier nom_du_module.info.yml 
+* Nous créons alors un dossier config dans le dossier de notre module, puis un sous-dossier install 
+* Ensuite nous utilisons de nouveau la console pour exporter les configurations. Les différentes options disponibles sont : 
+* * config:export -> Exporte la configuration actuelle de l'application.
+* * config:export:content:type -> Exporte un type de contenu avec les champs qui le composent.
+* * config:export:entity -> Exporte une entité de configuration et ses champs
+* * config:export:single -> Exporte une unique configuration sous la forme d'un fichier YAML.
+* * config:export:view -> Exporte une vue vue dans le format YAML au sein d'un module pour la réutiliser sur un autre site.
+* Il est alors nécessaire d'identifier l'ensemble des configurations nécessaires.
+* Pour cela il est conseillé d'avoir un deuxième drupal vierge et de tester son module au fur et à mesure (il faut systèmatiquement réinstaller un drupal vierge, ou positionner la config dans le dossier optionnal et non install pour pouvoir l'installer / le desinstaller plusieurs fois sans messages d'erreurs) 
 
 
 
