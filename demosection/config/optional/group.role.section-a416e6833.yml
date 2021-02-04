@@ -1,0 +1,16 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.section
+  enforced:
+    config:
+      - user.role.administrator
+id: section-a416e6833
+label: Administrateur
+weight: 2
+internal: true
+audience: outsider
+group_type: section
+permissions_ui: false
+permissions: {  }

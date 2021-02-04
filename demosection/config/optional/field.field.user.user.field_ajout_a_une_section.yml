@@ -1,0 +1,29 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_ajout_a_une_section
+    - group.type.section
+  module:
+    - user
+id: user.user.field_ajout_a_une_section
+field_name: field_ajout_a_une_section
+entity_type: user
+bundle: user
+label: 'Ajout a une section'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      section: section
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

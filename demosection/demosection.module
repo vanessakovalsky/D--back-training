@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Contains demosection.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\user\Entity\User;
+
+
+/**
+ * Implements hook_help().
+ */
+function demosection_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the demosection module.
+    case 'help.page.demosection':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function demosection_theme() {
+  return [
+    'demosection' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+function demosection_uninstall() {
+    // Delete all of the configuration installed by this module.
+    $dir = drupal_get_path('module', 'demosection') . '/config/optional';
+    $files = \Drupal::service('file_system')->scanDirectory($dir, '/.*/');
+    foreach ($files as $file) {
+      \Drupal::configFactory()->getEditable($file->name)->delete();
+    }
+    \Drupal::logger('demosection')->info(t('Deleted demosection configuration'), []);
+}
+
+function demosection_form_user_form_alter(&$form, $form_state, $form_id) {
+  $form['actions']['submit']['#submit'][] = 'add_user_to_section';
+}
+
+function add_user_to_section(&$form, &$form_state){
+  $account = User::load($form_state->getValue('uid'));
+  if(!$account->get('field_ajout_a_une_section')->isEmpty()){
+    $group = $account->get('field_ajout_a_une_section')->first()->get('entity')->getTarget()->getValue();
+    $group->addMember($account);
+  }
+}

@@ -1,0 +1,14 @@
+name: DemoSection
+type: module
+description: 'My Awesome Module'
+core_version_requirement: 9.x
+package: Custom
+dependencies:
+  - group_content_menu
+  - user
+  - gnode
+  - node
+  - subgroup
+  - image
+  - group
+  - text

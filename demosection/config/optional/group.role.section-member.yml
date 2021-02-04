@@ -1,0 +1,14 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.section
+id: section-member
+label: Membre
+weight: -100
+internal: true
+audience: member
+group_type: section
+permissions_ui: true
+permissions:
+  - 'view group'

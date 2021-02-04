@@ -1,0 +1,17 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.section
+    - group.type.sous_section
+  module:
+    - subgroup
+id: section-subgroup-sous_section
+label: 'Section: Subgroup (Sous-section)'
+description: 'Adds <em class="placeholder">Sous-section</em> groups as subgroups.'
+group_type: section
+content_plugin: 'subgroup:sous_section'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

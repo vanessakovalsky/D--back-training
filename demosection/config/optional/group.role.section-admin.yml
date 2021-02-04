@@ -1,0 +1,29 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.section
+id: section-admin
+label: Admin
+weight: -9
+internal: false
+audience: member
+group_type: section
+permissions_ui: true
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'administer group'
+  - 'administer members'
+  - 'create group_node:article entity'
+  - 'create subgroup:sous_section entity'
+  - 'delete group'
+  - 'delete own group_node:article entity'
+  - 'edit group'
+  - 'leave group'
+  - 'update any subgroup:sous_section content'
+  - 'update own group_membership content'
+  - 'update own subgroup:sous_section content'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view subgroup:sous_section content'

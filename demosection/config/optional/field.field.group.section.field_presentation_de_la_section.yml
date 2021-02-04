@@ -1,0 +1,20 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_presentation_de_la_section
+    - group.type.section
+  module:
+    - text
+id: group.section.field_presentation_de_la_section
+field_name: field_presentation_de_la_section
+entity_type: group
+bundle: section
+label: 'Présentation de la section'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

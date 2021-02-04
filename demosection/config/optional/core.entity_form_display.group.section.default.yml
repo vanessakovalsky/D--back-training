@@ -1,0 +1,73 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.group.section.field_image_de_la_section
+    - field.field.group.section.field_presentation_de_la_section
+    - field.field.group.section.subgroup_depth
+    - field.field.group.section.subgroup_left
+    - field.field.group.section.subgroup_right
+    - field.field.group.section.subgroup_tree
+    - group.type.section
+    - image.style.thumbnail
+  module:
+    - image
+    - path
+    - text
+id: group.section.default
+targetEntityType: group
+bundle: section
+mode: default
+content:
+  field_image_de_la_section:
+    weight: 4
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_presentation_de_la_section:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  subgroup_depth: true
+  subgroup_left: true
+  subgroup_right: true
+  subgroup_tree: true

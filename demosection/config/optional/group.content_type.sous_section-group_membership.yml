@@ -1,0 +1,16 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group.type.sous_section
+  module:
+    - user
+id: sous_section-group_membership
+label: 'Sous-section: Adhésion au groupe'
+description: 'Ajoute des utilisateurs aux groupes en tant que membres.'
+group_type: sous_section
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

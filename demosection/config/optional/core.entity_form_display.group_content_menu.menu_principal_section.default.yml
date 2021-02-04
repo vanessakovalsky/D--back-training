@@ -1,0 +1,26 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.menu_principal_section
+id: group_content_menu.menu_principal_section.default
+targetEntityType: group_content_menu
+bundle: menu_principal_section
+mode: default
+content:
+  label:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,20 @@
+langcode: fr
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.menu_principal_section
+id: group_content_menu.menu_principal_section.default
+targetEntityType: group_content_menu
+bundle: menu_principal_section
+mode: default
+content:
+  label:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  langcode: true

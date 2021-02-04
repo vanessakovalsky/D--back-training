@@ -1,0 +1,18 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - subgroup
+third_party_settings:
+  subgroup:
+    depth: 0
+    left: 1
+    right: 4
+    tree: section
+id: section
+label: Section
+description: ''
+creator_membership: true
+creator_wizard: true
+creator_roles:
+  - section-admin

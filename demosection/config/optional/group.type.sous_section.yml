@@ -1,0 +1,17 @@
+langcode: fr
+status: true
+dependencies:
+  module:
+    - subgroup
+third_party_settings:
+  subgroup:
+    depth: 1
+    left: 2
+    right: 3
+    tree: section
+id: sous_section
+label: Sous-section
+description: ''
+creator_membership: true
+creator_wizard: true
+creator_roles: {  }
