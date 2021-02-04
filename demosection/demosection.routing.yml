@@ -1,0 +1,15 @@
+
+demosection.demo_controller_demoPage:
+  path: '/demosection/demoPage'
+  defaults:
+    _controller: '\Drupal\demosection\Controller\DemoController::demoPage'
+    _title: 'demoPage'
+  requirements:
+    _permission: 'access content'
+demosection.pointage_form:
+  path: '/demosection/form/pointage'
+  defaults:
+    _form: '\Drupal\demosection\Form\PointageForm'
+    _title: 'PointageForm'
+  requirements:
+    _access: 'TRUE'
