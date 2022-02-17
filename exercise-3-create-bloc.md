@@ -31,39 +31,41 @@ vendor/bin/drupal generate:plugin:block
     return $build;
   }
 ```
-* Afin d'utliser les deux services (request_stack permettant d'accèder à la requête et ses paramètres et entity_type.manager), nous devons les injecter dans le constructeur de notre plugin block
+* Afin d'utliser le service (request_stack permettant d'accèder à la requête et ses paramètres), nous devons les injecter dans le constructeur de notre plugin block
  ```php
+ class AireBlock extends BlockBase implements ContainerFactoryPluginInterface{
+ 
   /**
-   * Drupal\Core\Entity\EntityTypeManagerInterface definition.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
-  /**
-   * Symfony\Component\HttpFoundation\RequestStack definition.
-   *
-   * @var \Symfony\Component\HttpFoundation\RequestStack
-   */
+  * Symfony\Component\HttpFoundation\RequestStack definition.
+  *
+  * @var \Symfony\Component\HttpFoundation\RequestStack
+  */
   protected $requestStack;
-  /**
-   * Constructs a new CalculAireBlock object.
-   *
-   * @param array $configuration
-   *   A configuration array containing information about the plugin instance.
-   * @param string $plugin_id
-   *   The plugin_id for the plugin instance.
-   * @param string $plugin_definition
-   *   The plugin implementation definition.
-   */
+
   public function __construct(
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    EntityTypeManagerInterface $entity_type_manager,
-	RequestStack $request_stack
+    RequestStack $request_stack
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->entityTypeManager = $entity_type_manager;
     $this->requestStack = $request_stack;
+  }
+
+    /**
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   * @param array $configuration
+   * @param string $plugin_id
+   * @param mixed $plugin_definition
+   *
+   * @return static
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('request_stack')
+    );
   }
  ```
