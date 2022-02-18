@@ -36,7 +36,7 @@ vendor/bin/drupal generate:form
     ];
 ```
 * Ici on déclare les valideurs avec le type de fichier et la taille et on les ajoute dans le tableau de déclaration du champs. Les informations relatives aux options disponibles pour chaque champs sont ici :
-https://api.drupal.org/api/drupal/elements/8.9.x 
+https://api.drupal.org/api/drupal/elements/9.3.x
 
 * Aller à l'URL du formulaire pour vérifier que celui-ci s'affiche correctement
 
