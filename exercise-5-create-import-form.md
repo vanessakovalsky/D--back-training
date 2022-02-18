@@ -95,7 +95,7 @@ https://api.drupal.org/api/drupal/elements/8.9.x
       }
       $boat->save();
     }
-      drupal_set_message('Les bateaux ont été créé');
+      \Drupal::messenger()->addStatus('Les bateaux ont été créé');
 
   }
 ```
