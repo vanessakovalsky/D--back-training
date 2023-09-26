@@ -23,5 +23,5 @@ drupal generate:module
 ```
 vendor/bin/drupal cect
 ```
-* Répondre aux questions et générées la config 
+* Répondre aux questions et générer la config 
 * Après avoir supprimé votre type de contenu Bateau, vous pouvez activez le module que vous avez créé. 
