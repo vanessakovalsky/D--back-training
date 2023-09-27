@@ -60,7 +60,7 @@ function bateau_edit_send_email(&$form, &$form_state){
 * Il nous reste une étape avant de tester, pour fonctionner le service mailer de Drupal a besoin d'un template d'email, celui-ci est définit dans une fonction hook_mail à ajouter à votre fichier .module
 
 ```
-function demomodule_mail($key, &$message, $params) {
+function boatmanagement_mail($key, &$message, $params) {
   switch ($key) {
     case 'send_owner_boat':
       $message['subject'] = $params['subject'];
