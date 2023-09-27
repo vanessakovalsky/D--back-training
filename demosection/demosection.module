@@ -46,6 +46,32 @@ function demosection_uninstall() {
     \Drupal::logger('demosection')->info(t('Deleted demosection configuration'), []);
 }
 
+function demosection_update_9014(){
+  // Add Block content first
+  $block_content = \Drupal::service('entity_type.manager')->getStorage('block_content')->create([
+    'type' => 'basic',
+    'info' => 'Demo Block 7',
+  ]);
+  $block_content->set('body', 'This is demo block for drupal 9');
+  $block_content->save();
+
+  // Then Add Block entity to show the bloc and link this to block content
+  $blockEntityManager = \Drupal::service('entity_type.manager')->getStorage('block');
+  $block = $blockEntityManager->create([
+    'id' => 'contrat_block7',
+    'plugin' => 'block_content:' . $block_content->uuid(),
+    'region' => 'content',
+    'provider' => 'block_content',
+    'theme' => 'olivero',
+    'settings' => [
+      'label' => 'Demo Block 7',
+      'label_display' => 'visible',
+    ],
+  ]);
+  $block->save();
+
+}
+
 function demosection_form_user_form_alter(&$form, $form_state, $form_id) {
   $form['actions']['submit']['#submit'][] = 'add_user_to_section';
 }
