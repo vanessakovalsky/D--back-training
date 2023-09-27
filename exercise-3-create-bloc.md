@@ -69,3 +69,14 @@ vendor/bin/drupal generate:plugin:block
     );
   }
  ```
+* En l'état, votre bloc sera mis en cache au premier affichage d'un contenu bateau. Afin de le forcer à calculer avec les bonnes valeurs pour chaque bateau, il est conseiller de désactiver le cache pour ce bloc spécifiquement, pour cela rajouter dans la classe de votre Bloc, la fonction suivante :
+
+```
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheMaxAge(){
+    return 0;
+  }
+```
+* Vous pouvez maintenant positionner votre bloc et ajouter différents bateaux pour voir le calcul se faire.
