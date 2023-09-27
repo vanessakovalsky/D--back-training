@@ -24,6 +24,7 @@ vendor/bin/drupal generate:form
 
 * Afin de limiter les fichiers qui peuvent être envoyé on va rajouter des valideurs sur notre champ fichier 
 ```
+// Penser à rajouter le Use pour la classe Environment : use Drupal\Component\Utility\Environment;
     $validators = array(
       'file_validate_extensions' => array('csv'),
       'file_validate_size' => array(Environment:getUploadMaxSize()),
@@ -34,6 +35,7 @@ vendor/bin/drupal generate:form
       '#weight' => '0',
       '#upload_validators' => $validators,
     ];
+
 ```
 * Ici on déclare les valideurs avec le type de fichier et la taille et on les ajoute dans le tableau de déclaration du champs. Les informations relatives aux options disponibles pour chaque champs sont ici :
 https://api.drupal.org/api/drupal/elements/9.3.x
@@ -52,6 +54,7 @@ https://api.drupal.org/api/drupal/elements/9.3.x
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Display result.
     $file_id = $form_state->getValue('fichier_csv_import');
+    // Pensez à mettre le use pour la classe File : use Drupal\file\Entity\File;
     $file = File::load($file_id[0]);
     $uri = $file->getFileUri();
     $line_max = 1000;
@@ -62,6 +65,7 @@ https://api.drupal.org/api/drupal/elements/9.3.x
       // $row is an array of elements in each row
       // e.g. if the first column is the email address of the user, try something like
       $row_data = explode(';', $row[0]);
+        // Mettre le use ou utiliser le service entityTypeManager (à injecter via la fonction create ou le constructeur)
       $boat = Node::create([
         'uid' => 1,
         'revision' => 0,
@@ -72,7 +76,7 @@ https://api.drupal.org/api/drupal/elements/9.3.x
         'type' => 'bateau'
       ]);
       $boat->setTitle($row_data[0]);
-      $boat->set('field_longueur', $row_data[1]);
+      $boat->set('field_longueur', $row_data[1]); // /!\ Attention aux format de données de destination, caster si nécessaire les valeurs brutes
       $boat->set('field_largeur', $row_data[2]);
       $boat->set('field_hauteur', $row_data[3]);
       $boat->set('field_prix', $row_data[4]);
@@ -82,16 +86,17 @@ https://api.drupal.org/api/drupal/elements/9.3.x
         $term = $this->entityManager->getStorage('taxonomy_term')->loadByProperties(['name' => $port]);
         if(isset($term) && !empty($term)){
           //On rattache le terme au champs du bateau
-          $port_attache = reset($term);
+          $port_attache = reset($term)->id();
         }
         else {
           //On cree le terme de taxo
+            // Pensez au use pour Term ou utiliser le service entity_type.manager
           $port_attache = Term::create([
             'name' => $port,
             'vid' => 'ports',
           ])->save();
         }
-        $boat->field_port->target_id = $port_attache->id();
+        $boat->field_port->target_id = $port_attache;
       }
       $boat->save();
     }
