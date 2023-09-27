@@ -57,4 +57,19 @@ function bateau_edit_send_email(&$form, &$form_state){
 ```
 * Assurez vous que le nom des champs utilisé dans le code donné en exemple corresponde au nom des champs que vous utilisez dans votre module
 
+* Il nous reste une étape avant de tester, pour fonctionner le service mailer de Drupal a besoin d'un template d'email, celui-ci est définit dans une fonction hook_mail à ajouter à votre fichier .module
+
+```
+function demomodule_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'send_owner_boat':
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
+```
+
+* Si votre environnement est configuré pour l'envoi des mails, vous pouvez modifier un noeud et mettre un propriétaire pour tester, vous pouvez aussi utiliser des modules comme mailsystem et mailhog pour vos environnements de développement, afin de tester vos envois d'email sans besoin de serveur SMTP.
+
 -> Félicitations, vous savez maintenant modifier un formulaire existant, déclarer une permission et utiliser l'API des entités pour retrouver des données
