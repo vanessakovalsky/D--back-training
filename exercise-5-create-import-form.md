@@ -26,7 +26,7 @@ vendor/bin/drupal generate:form
 ```
     $validators = array(
       'file_validate_extensions' => array('csv'),
-      'file_validate_size' => array(file_upload_max_size()),
+      'file_validate_size' => array(Environment:getUploadMaxSize()),
     );
     $form['fichier_csv_import'] = [
       '#type' => 'managed_file',
