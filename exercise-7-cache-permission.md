@@ -48,3 +48,9 @@ administer demo_module_boat configuration:
     return AccessResult::allowedIfHasPermission($account, 'administer demo_module_boat configuration');
   }
 ```
+
+## Bonus - Déclarer une permission dynamique
+
+* Ajouter un champs booléen, à vendre dans le type de contenu Bateau. 
+* Définir une permission dynamique afin de ne rendre accessible les noeuds de type bateau en lecture que à leur propriétaire sauf si le bateau est à vendre (booléen true)
+* 
