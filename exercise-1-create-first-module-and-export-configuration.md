@@ -8,7 +8,7 @@ Cet exercice a pour objectifs de :
 
 * Créer un module appeler BoatManagement à l'aide de la console :
 ```
-drupal generate:module
+vendor/bin/drupal generate:module
 ```
 * Répondre aux questions posées pour créer le module
 * Dans quel dossier s'est créer le module ?
