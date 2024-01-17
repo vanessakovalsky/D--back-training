@@ -27,7 +27,7 @@ vendor/bin/drupal generate:form
 // Penser à rajouter le Use pour la classe Environment : use Drupal\Component\Utility\Environment;
     $validators = array(
       'file_validate_extensions' => array('csv'),
-      'file_validate_size' => array(Environment:getUploadMaxSize()),
+      'file_validate_size' => array(Environment::getUploadMaxSize()),
     );
     $form['fichier_csv_import'] = [
       '#type' => 'managed_file',
