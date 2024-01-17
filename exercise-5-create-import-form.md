@@ -83,7 +83,7 @@ https://api.drupal.org/api/drupal/elements/9.3.x
       //On vérifie si le terme de taxonomie existe
       if(!empty($row_data[5])){
         $port = $row_data[5];
-        $term = $this->entityManager->getStorage('taxonomy_term')->loadByProperties(['name' => $port]);
+        $term = $this->entityManager->getStorage('taxonomy_term')->loadByProperties(['name' => $port, 'vid' => 'port_d_attachement');
         if(isset($term) && !empty($term)){
           //On rattache le terme au champs du bateau
           $port_attache = reset($term)->id();
